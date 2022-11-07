@@ -74,7 +74,7 @@ export class Grid {
         });
 
         // Initialize the Locomotive scroll
-        // this.initSmoothScroll();
+        this.initSmoothScroll();
 
         // Initialize the events on the page.
         this.initEvents();
@@ -124,7 +124,7 @@ export class Grid {
                 this.currentGridItem = position;
 
                 // Stop/Destroy the Locomotive scroll
-                // this.lscroll.destroy();
+                this.lscroll.destroy();
 
                 this.showContent(gridItem);
             });
@@ -195,8 +195,8 @@ export class Grid {
             this.isGridView = true;
 
             // Restart the Locomotive scroll
-            // this.initSmoothScroll();
-            // this.lscroll.scrollTo(this.lastscroll, {duration: 0, disableLerp: true});
+            this.initSmoothScroll();
+            this.lscroll.scrollTo(this.lastscroll, {duration: 0, disableLerp: true});
 
             this.closeContent();
         });
