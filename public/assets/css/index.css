@@ -4,11 +4,16 @@
   border-color: #f3f3f3 !important;
 }
 
-.record-button:hover,
+/*.record-button:hover,
 .play-button:hover {
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 
-}
+} 
+
+.record-button:after {
+	fill:rgba(250, 216, 230, 0)
+} */
+
 
 .play-button {
   height: 8em;
@@ -20,6 +25,14 @@
   width: 150px;
   height: 150px;
 }
+
+.startbutton {
+	color:rgba(173, 216, 230, 0)
+	width: 150px;
+	height: 150px;
+	border-color: #f3f3f3;
+}
+
 
 body{
   /* background-color: lightblue; */
