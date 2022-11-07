@@ -239,14 +239,18 @@ main::after {
 	position: relative;
 	padding: 0 3rem;
 	display: flex;
+  /* background-color: pink; */
 	justify-content: center;
 }
+
+
 
 .column-wrap {
 	position: relative;
 	z-index: 1;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+  /* display: flex;
+	flex-direction: column; */
 	padding: 5vh 0 15vh;
 }
 
@@ -259,6 +263,8 @@ main::after {
 	position: relative;
 	display: block;
 	will-change: transform;
+  /* background-color: blue; */
+
 }
 
 .view-content .columns,
@@ -599,7 +605,7 @@ main::after {
 }
 
 /*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
-html.has-scroll-smooth {
+/* html.has-scroll-smooth {
 	overflow: hidden;
 }
 
@@ -855,6 +861,7 @@ body {
     bottom: 100%;
   }
 }
+
 
 .about{
 	 text-align: center;
