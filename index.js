@@ -17,20 +17,9 @@ const upload = multer({ storage });
 const app = express();
 const port = process.env.PORT || 3000;
 
-// const nm_dependencies = ['locomotive-scroll']; // keep adding required node_modules to this array.
-// nm_dependencies.forEach(dep => {
-//   app.use(`/${dep}`, express.static(__dirname+`node_modules/${dep}`));
-// });
-
 
 app.use(express.static('public/assets'));
 app.use(express.static('uploads'));
-// app.use('/scripts',express.static(__dirname+ '/node_modules/locomotive-scroll/dist'))
-//
-//
-// app.get('/scripts/locomotive-scroll.min.js', function(req, res) {
-//     res.sendFile(__dirname + '/node_modules/locomotive-scroll/dist/locomotive-scroll.min.js');
-// });
 
 
 
