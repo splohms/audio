@@ -1,4 +1,4 @@
-const imagesLoaded = require('imagesloaded');
+// const imagesLoaded = require('imagesloaded');
 
 // Preload images
 const preloadImages = (selector = 'img') => {

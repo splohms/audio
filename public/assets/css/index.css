@@ -291,6 +291,11 @@ main::after {
 	border-radius: 8px;
 	cursor: pointer;
 	margin: 8vh 1vw 0;
+  hover:
+}
+
+.column__item-imgwrap :hover {
+  bacgkground-color: red;
 }
 
 .column__item-img {
