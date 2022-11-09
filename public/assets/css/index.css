@@ -902,13 +902,13 @@ label {
 
 
 #display-image{
-  height: 400px;
+  height: 200px;
   background-position: center;
   background-color: rgba(200,200,200,.25);
   background-size: cover;
   align-items: center;
   margin: auto;
-  width: 600px;
+  width: 300px;
   position: relative;
   border-radius: 20px;
   margin-top:50px;
