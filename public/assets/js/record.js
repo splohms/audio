@@ -8,10 +8,12 @@ const recordedAudioContainer = document.getElementById('recordedAudioContainer')
 const saveAudioButton = document.getElementById('saveButton');
 const discardAudioButton = document.getElementById('discardButton');
 const recordingsContainer = document.getElementById('recordings');
+const image_input = document.getElementById("actual-btn");
 
 let chunks = []; // will be used later to record audio
 let mediaRecorder = null; // will be used later to record audio
 let audioBlob = null; // the blob that will hold the recorded audio
+let imageBlob = null; // the blob that will hold the uploaded image
 
 function mediaRecorderDataAvailable(e) {
   chunks.push(e.data);
@@ -23,6 +25,8 @@ function mediaRecorderStop() {
     recordedAudioContainer.firstElementChild.remove();
   }
   const audioElm = document.createElement('audio');
+  const imageElm = document.createElement('image');
+
   audioElm.setAttribute('controls', ''); // add controls
   audioBlob = new Blob(chunks, { type: 'audio/mp3' });
   const audioURL = window.URL.createObjectURL(audioBlob);
@@ -134,9 +138,14 @@ function fetchRecordings() {
     .catch((err) => console.error(err));
 }
 
+console.log("HI")
+
 function saveRecording() {
   const formData = new FormData();
   formData.append('audio', audioBlob, 'recording.mp3');
+  // formData.append('img', imageBlob, 'img.mp3');
+
+
   fetch('/record', {
     method: 'POST',
     body: formData,
@@ -166,3 +175,17 @@ function discardRecording() {
 discardAudioButton.addEventListener('click', discardRecording);
 
 fetchRecordings();
+
+function displayImage(){
+  image_input.addEventListener("change", function() {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      const uploaded_image = reader.result;
+      document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+    });
+    reader.readAsDataURL(this.files[0]);
+  });
+
+}
+
+displayImage();
