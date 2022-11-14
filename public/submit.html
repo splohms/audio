@@ -12,18 +12,19 @@
 
 
 <body class="pt-5">
+  <div class = "background">
+ </div>
   <h2 class="heading heading--down" style="color:#AA336A">Submit</h2>
 
   <div class="frame">
-    <h1 class="frame__title">Share your story</h1>
+    <a class="frame__title" href="/submit">Submit your story</a>
     <nav class="frame__links">
-      <a href="\">Home</a>
-      <a href= "\about">About</a>
-      <a href= "\submit">Submit</a>
+      <a href="/">Home</a>
+      <a href= "/about">About</a>
+      <!-- <a href="/submit">Submit</a> -->
     </nav>
-    <button class="unbutton button-menu" aria-label="Open the menu"><span></span></button>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <h1 class="text-center">Record Your Voice</h1>
     <div class="record-button-container text-center mt-5">
       <button class="bg-transparent border btn record-button rounded-circle shadow-sm text-center" id="recordButton">
@@ -47,17 +48,24 @@
   <div class ="upload-image">
 
     <!--default html file upload button-->
-    <input type="file" id="actual-btn" accept="image/jpeg, image/png, image/jpg" / hidden>
+    <!-- <input type="file" id="actual-btn" accept="image/jpeg, image/png, image/jpg" / hidden> -->
 
     <!--our custom file upload button-->
-    <label for="actual-btn">Upload Image</label>
+    <!-- <label for="actual-btn">Upload Image</label>
     <div id="display-image"></div>
 
+  </div>  -->
+
+  <div id="form">
+      <script type="text/javascript" src="https://form.jotform.com/jsform/223027820929053"></script>
   </div>
+
+  <script src="https://js.jotform.com/JotForm.js"></script>
 
 
 
   <script src="/js/record.js"></script>
+  <script src="/js/removeBranding.js"></script>
 
 
 </body>
