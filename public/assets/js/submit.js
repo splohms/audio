@@ -20,10 +20,29 @@ JF.getFormSubmissions("223027820929053", function (response) {
       response[i].answers[answer].answer;
   });
 
-  // console.log("Props", submissionProps);
+  console.log("Props", submissionProps);
 
   // add submission to submissions array
   submissions.push(submissionProps);
+}
+
+
+function playRecording(e) {
+  let button = e.target;
+  if (button.tagName === 'IMG') {
+    // get parent button
+    button = button.parentElement;
+  }
+  const audio = button.previousElementSibling;
+  if (audio && audio.tagName === 'AUDIO') {
+    if (audio.paused) {
+      audio.play();
+      button.firstElementChild.src = 'images/pause.png';
+    } else {
+      audio.pause();
+      button.firstElementChild.src = 'images/play.png';
+    }
+  }
 }
 
 const col = document.getElementById('column');
@@ -31,7 +50,7 @@ const col = document.getElementById('column');
 // let filters = ["park", "friends", "food"]
 
 for (var j = 0; j < submissions.length; j++){
-  // 
+  //
   // if (submissions[i].answers.tags.some(x => filters.includes(x))
   //
   // // const story = document.createElement("div");
@@ -86,30 +105,52 @@ for (var j = 0; j < submissions.length; j++){
    const title = document.createElement("figcaption");
    title.className = "column__item-caption";
 
-   const span = document.createElement("p");
+   const span = document.createElement("h6");
    span.innerHTML= submissions[j]["storyTitle"];
-   span.style= 'text-align:center';
+
+   const date = document.createElement("span")
+   date.innerHTML = "2020"
+
+   const playButton = document.createElement('button');
+   playButton.classList.add('play-button', 'btn', 'border', 'shadow-sm', 'text-center', 'd-block', 'mx-auto');
+
+   const playImage = document.createElement('img');
+   playImage.src = '/images/play.png';
+   playImage.classList.add('img-fluid');
+
+   // make background image of play button the image or stick the image on top of the play button
+   // playImage.style = "background-image:url(" + submissions[j]["Take Photo"] + ")";
+   playButton.addEventListener('click', playRecording);
+   playButton.appendChild(playImage);
+
 
    const audio = document.createElement("audio");
    audio.id = "story-sound";
+   audio.onended = (e) => {
+     e.target.nextElementSibling.firstElementChild.src = 'images/play.png';
+   };
 
    let text1 = "https://jotform.com/";
    let text2 = submissions[j]["Voice Recorder"];
    let result = text1.concat(text2);
 
    audio.src = result;
-   audio.setAttribute('controls', ''); // add controls
+   // audio.setAttribute('controls', ''); // add controls
 
    const audio_container = document.createElement("div");
    audio_container.className = "audio-container";
 
-   audio_container.appendChild(audio)
+   audio_container.appendChild(audio);
+   audio_container.appendChild(playButton);
 
    title.appendChild(span);
+   title.appendChild(date);
+   image.appendChild(audio_container)
    wrapper.appendChild(image);
+   // wrapper.appendChild(audio_container);
    story.appendChild(wrapper);
    story.appendChild(title);
-   story.appendChild(audio_container);
+   // story.appendChild(audio_container);
 
    document.getElementById('column').appendChild(story);
 
@@ -118,4 +159,5 @@ for (var j = 0; j < submissions.length; j++){
 
 
 }
+
 });
