@@ -3,8 +3,8 @@ JF.initialize({ apiKey: "8ae1a9cbfe5470129d1af524cc098f4c" }); //PUT YOUR OWN KE
 
 // get form submissions from JotForm Format: (formID, callback)
 JF.getFormSubmissions("223027820929053", function (response) {
-  console.log(response);
-  console.log("HI");
+  console.log("RESPONSe", response);
+  // console.log("HI");
 
   const submissions = [];
 
@@ -13,18 +13,22 @@ JF.getFormSubmissions("223027820929053", function (response) {
   const submissionProps = {};
 
   // add all fields of response.answers to our object
-  const keys = Object.keys(response[i].answers);
+  const keys = Object.keys(response[i].answers)
+  const date = response[i].created_at
+
   keys.forEach((answer) => {
     const lookup = response[i].answers[answer].cfname ? "cfname" : "name";
     submissionProps[response[i].answers[answer][lookup]] =
       response[i].answers[answer].answer;
   });
 
-  console.log("Props", submissionProps);
+  submissionProps["date"] = date
+  // console.log("Props", submissionProps);
 
   // add submission to submissions array
   submissions.push(submissionProps);
 }
+
 
 
 function playRecording(e) {
@@ -109,7 +113,8 @@ for (var j = 0; j < submissions.length; j++){
    span.innerHTML= submissions[j]["storyTitle"];
 
    const date = document.createElement("span")
-   date.innerHTML = "2020"
+   console.log(typeof(submissions[j]["date"]))
+   date.innerHTML = submissions[j]["date"].slice(0,4)
 
    const playButton = document.createElement('button');
    playButton.classList.add('play-button', 'btn', 'border', 'shadow-sm', 'text-center', 'd-block', 'mx-auto');
