@@ -1029,7 +1029,14 @@ html {
   z-index: 100;
 }
 /* CSS */
+
 .button-16 {
+position: relative;
+  width: 10%;
+  height: relative;
+}
+
+/* .button-16 {
   background-color: #f8f9fa;
   border: 1px solid #f8f9fa;
   border-radius: 4px;
@@ -1046,18 +1053,18 @@ html {
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: pre;
-}
+} */
 
-.button-16:hover {
+/* .button-16:hover {
   border-color: #dadce0;
   box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
   color: #202124;
-}
+} 
 
 .button-16:focus {
   border-color: #4285f4;
   outline: none;
-}
+} */
 
 .search-container {
   top: 0px;
