@@ -246,7 +246,7 @@ main::after {
 	padding: 0 3rem;
 	display: flex;
 	justify-content: center;
-  margin-top: 20%;
+  /* margin-top: 20%; */
 }
 
 
@@ -308,9 +308,6 @@ main::after {
   z-index: 1;
 }
 
-.column__item-imgwrap :hover {
-  bacgkground-color: red;
-}
 
 .column__item-img {
 	width: 100%;
@@ -325,6 +322,12 @@ main::after {
 	padding: 0 3vw;
 	margin-top: 0.5rem;
 }
+
+.column__item-caption :hover {
+	text-transform: lowercase;
+}
+
+
 
 .content {
 	position: fixed;
@@ -1092,8 +1095,7 @@ html {
 	 text-align: center;
 	 height: 75px;
 	 overflow: hidden;
-   /* margin-top: 6%; */
-  `background-color: blue;
+   /* margin-top: 6%; */x
 }
  .carousel .change_outer .change_inner {
 	 position: relative;
@@ -1121,3 +1123,5 @@ html {
 		 transform: translateY(-300px);
 	}
 }
+
+a:link { color: black; }

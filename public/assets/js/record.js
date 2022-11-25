@@ -27,6 +27,7 @@ function mediaRecorderStop() {
   const audioElm = document.createElement('audio');
   const imageElm = document.createElement('image');
 
+
   audioElm.setAttribute('controls', ''); // add controls
   audioBlob = new Blob(chunks, { type: 'audio/mp3' });
   const audioURL = window.URL.createObjectURL(audioBlob);

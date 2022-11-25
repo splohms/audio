@@ -3,7 +3,6 @@ JF.initialize({ apiKey: "8ae1a9cbfe5470129d1af524cc098f4c" }); //PUT YOUR OWN KE
 
 // get form submissions from JotForm Format: (formID, callback)
 JF.getFormSubmissions("223027820929053", function (response) {
-  console.log("RESPONSe", response);
   // console.log("HI");
 
   const submissions = [];
