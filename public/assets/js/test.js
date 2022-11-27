@@ -1,4 +1,4 @@
-function playRecording(e) {
+function playRecording(e,sound) {
   let button = e.target;
   if (button.tagName === 'IMG') {
     // get parent button
@@ -7,6 +7,7 @@ function playRecording(e) {
   const audio = button.previousElementSibling;
   if (audio && audio.tagName === 'AUDIO') {
     if (audio.paused) {
+      
       audio.play();
       button.firstElementChild.src = 'images/pause.png';
     } else {
@@ -37,18 +38,6 @@ function makePost(parent, pos, file, sound, name, year ) {
   title.innerHTML = name
   date.innerHTML =  year
 
-  const playButton = document.createElement('button');
-  playButton.classList.add('play-button', 'btn', 'border', 'shadow-sm', 'text-center', 'd-block', 'mx-auto');
-
-  const playImage = document.createElement('img');
-  playImage.src = '/images/play.png';
-  playImage.classList.add('img-fluid');
-
-  // make background image of play button the image or stick the image on top of the play button
-  // playImage.style = "background-image:url(" + submissions[j]["Take Photo"] + ")";
-  playButton.addEventListener('click', playRecording);
-  playButton.appendChild(playImage);
-
 
   const audio = document.createElement("audio");
   audio.id = "story-sound";
@@ -57,21 +46,42 @@ function makePost(parent, pos, file, sound, name, year ) {
   };
 
   let text1 = "https://jotform.com/";
+  console.log(sound);
   let result = text1.concat(sound);
 
-  audio.src = result;
+  if(sound!=undefined){
+    audio.src = result;
+
+    const playButton = document.createElement('button');
+    playButton.classList.add('play-button', 'btn', 'border', 'shadow-sm', 'text-center', 'd-block', 'mx-auto');
+  
+    const playImage = document.createElement('img');
+    playImage.src = '/images/play.png';
+    playImage.classList.add('img-fluid');
+  
+    // make background image of play button the image or stick the image on top of the play button
+    // playImage.style = "background-image:url(" + submissions[j]["Take Photo"] + ")";
+    playButton.addEventListener('click', playRecording);
+    playButton.appendChild(playImage);
+    const audio_container = document.createElement("div");
+    audio_container.className = "audio-container";
+  
+    img.appendChild(audio_container)
+    audio_container.appendChild(audio);
+    audio_container.appendChild(playButton);
+  
+  }
+
+
   // audio.setAttribute('controls', ''); // add controls
 
-  const audio_container = document.createElement("div");
-  audio_container.className = "audio-container";
+ 
 
-  audio_container.appendChild(audio);
-  audio_container.appendChild(playButton);
 
   caption.appendChild(title)
   caption.append(date)
 
-  img.appendChild(audio_container)
+
   wrapper.appendChild(img)
 
   fig.appendChild(wrapper)

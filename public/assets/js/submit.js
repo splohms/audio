@@ -139,7 +139,7 @@ for (var j = 0; j < submissions.length; j++){
    let result = text1.concat(text2);
 
    audio.src = result;
-   // audio.setAttribute('controls', ''); // add controls
+   audio.setAttribute('controls', ''); // add controls
 
    const audio_container = document.createElement("div");
    audio_container.className = "audio-container";

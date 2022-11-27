@@ -190,6 +190,7 @@ main::after {
 	margin: 0 0.5rem 0 0;
 }
 
+
 .button-menu {
 	grid-area: menu;
 	position: relative;
@@ -246,7 +247,6 @@ main::after {
 	padding: 0 3rem;
 	display: flex;
 	justify-content: center;
-  /* margin-top: 20%; */
 }
 
 
@@ -254,7 +254,7 @@ main::after {
 .column-wrap {
 	position: relative;
 	z-index: 1;
-  display: flex;
+  	display: flex;
 	flex-direction: column;
 	padding: 5vh 0 15vh;
 }
@@ -488,6 +488,24 @@ main::after {
 	stroke: #823725;
 }
 
+@media screen and (max-width: 53em) {
+	.frame__links{
+		text-align: center;
+		-webkit-writing-mode: vertical-rl;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+
+		
+		
+	}
+
+	.frame__links a {
+		border-bottom: 0;
+		border-left: 1px solid var(--color-link);
+		margin: 0.5rem 0;
+		font-size: 14px;
+	}
+  }
 
 @media screen and (min-width: 53em) {
 	:root {
