@@ -3,7 +3,6 @@ JF.initialize({ apiKey: "8ae1a9cbfe5470129d1af524cc098f4c" }); //PUT YOUR OWN KE
 
 // get form submissions from JotForm Format: (formID, callback)
 JF.getFormSubmissions("223027820929053", function (response) {
-  console.log("RESPONSe", response);
   // console.log("HI");
 
   const submissions = [];
@@ -140,7 +139,7 @@ for (var j = 0; j < submissions.length; j++){
    let result = text1.concat(text2);
 
    audio.src = result;
-   // audio.setAttribute('controls', ''); // add controls
+   audio.setAttribute('controls', ''); // add controls
 
    const audio_container = document.createElement("div");
    audio_container.className = "audio-container";
