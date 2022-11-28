@@ -186,7 +186,7 @@ export class Grid {
             }
         });
 
-        // Close the current item's content and reveal back the grid.
+        // Close the current item's content and reveal back the grid. - here??
         this.DOM.backCtrl.addEventListener('click', () => {
             if ( this.isGridView || this.isAnimating ) {
                 return false;
@@ -273,7 +273,7 @@ export class Grid {
             this.timeline
             .to([viewportGridItem.DOM.caption, gridItem.DOM.caption], {
                 ease: 'expo',
-                opacity: 0,
+                opacity: 0, // this thingy makes them disappear 
                 delay: 0.03*position
             }, 'start')
             .to(viewportGridItem.DOM.img.outer, {
@@ -371,6 +371,9 @@ export class Grid {
                 gsap.set(this.viewportGridItemsImgOuter, {willChange: ''});
             }
         }, 'start')
+        .to([this.viewportGridItems.map(gridItem => gridItem.DOM.caption), gridItem.DOM.caption], {
+            opacity: 1
+        }, 'start')
 
 
         .addLabel('showGrid', 'start+=0.2')
@@ -379,11 +382,15 @@ export class Grid {
             scaleY: 1
         }, 'showGrid')
         .to([this.viewportGridItems.map(gridItem => gridItem.DOM.caption), gridItem.DOM.caption], {
-            ease: 'power4.in',
+            opacity: 1
+        }, 'showGrid')
+        .to([this.viewportGridItem.DOM.caption, gridItem.DOM.caption], {
             opacity: 1
         }, 'showGrid')
 
     }
+
+
 
     /**
      * Calculates the scale value to apply to the images that animate to the .content__nav area (scale down to the size of a nav area item).

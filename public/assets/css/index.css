@@ -321,12 +321,9 @@ main::after {
 	text-transform: uppercase;
 	padding: 0 3vw;
 	margin-top: 0.5rem;
+	z-index: 1000;
+	opacity: 1;
 }
-
-.column__item-caption :hover {
-	text-transform: lowercase;
-}
-
 
 
 .content {
@@ -368,7 +365,7 @@ main::after {
 }
 
 .content__item-title {
-	opacity: 0;
+	opacity: 1;
 	grid-area: title;
 	margin: 1rem 0 0 1.5rem;
 	justify-self: center;
@@ -382,7 +379,7 @@ main::after {
 }
 
 .content__item-text {
-	opacity: 0;
+	opacity: 1;
 	text-transform: uppercase;
 	grid-area: text;
 	display: flex;
@@ -505,6 +502,15 @@ main::after {
 		margin: 0.5rem 0;
 		font-size: 14px;
 	}
+
+	.column__item {
+		height: 20%;
+	}
+
+	.columns{
+		margin-top: -150px;
+	}
+
   }
 
 @media screen and (min-width: 53em) {
@@ -584,7 +590,7 @@ main::after {
 	}
 
 	.column__item-caption {
-		display: flex;
+		/* display: flex; */
 		justify-content: space-between;
 	}
 

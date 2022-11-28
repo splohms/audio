@@ -19,15 +19,26 @@ function playRecording(e,sound) {
 
 function makePost(parent, pos, file, sound, name, year ) {
   const fig = document.createElement("figure")
-  fig.className = "column_item"
+  fig.className = "column__item"
 
   const wrapper = document.createElement("div")
   wrapper.className = "column__item-imgwrap"
   wrapper.setAttribute("data-pos", pos)
 
+
+  console.log(file);
   const img = document.createElement("div")
-  img.className = "column__item-img"
-  img.style = "background-image:url(" + file + ")";
+
+  if(file == undefined){
+
+    wrapper.style = "background-color: rgba(255,255,255,.25);";
+  }
+  else{  
+    img.className = "column__item-img"
+    img.style = "background-image:url(" + file + ")";
+}
+
+
 
   const caption = document.createElement("figcaption")
   caption.className = "column__item-caption"
@@ -46,7 +57,7 @@ function makePost(parent, pos, file, sound, name, year ) {
   };
 
   let text1 = "https://jotform.com/";
-  console.log(sound);
+  // console.log(sound);
   let result = text1.concat(sound);
 
   if(sound!=undefined){
@@ -120,22 +131,22 @@ JF.getFormSubmissions("223027820929053", function (response) {
   // add submission to submissions array
   submissions.push(submissionProps);
 }
- console.log("My Stories",submissions)
+//  console.log("My Stories",submissions)
 
  for (var j = 0; j < submissions.length; j++){
 
   if ((j+1)%(3) == 0){
-    console.log(3);
+    // console.log(3);
     parent = colTwo
   }
   else if((j+1)%(3) == 1) {
-    console.log(1);
+    // console.log(1);
     parent = colThree;
 
   }
 
   else if((j+1)%(3) == 2) {
-    console.log(2);
+    // console.log(2);
     parent = colOne;
 
   }

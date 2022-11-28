@@ -35,6 +35,10 @@ app.get('/submit', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/submit.html'));
 });
 
+app.get('/story', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/story.html'));
+});
+
 app.post('/record', upload.single('audio'), (req, res) => res.json({ success: true }));
 
 app.get('/recordings', (req, res) => {
