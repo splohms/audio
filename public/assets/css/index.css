@@ -1036,11 +1036,19 @@ html {
 	position: absolute;
 	top: 0;
 	right: 0;
-	border: 3px solid red;
+	border: 2px solid white;
 	z-index: 1000;
-	margin: 3rem;
-	background-color: white;
+	margin-right: 1rem;
+	margin-top: -2rem;
+	background-color:#51988B;
 	cursor: pointer;
+	border-radius: 5px;
+	height: fit-content;
+}
+
+.filter-button:hover{
+	background-color: #FFF981;
+
 }
 
 

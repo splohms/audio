@@ -15,7 +15,6 @@ window.addEventListener("load", function(){
 document.querySelector("#close").addEventListener("click", function(){
   document.querySelector(".popup").style.display = "none";
   document.querySelector(".everything").style.backgroundColor =  "rgba(0,0,0,0)";
-  console.log("Yup")
 });
 
 function playRecording(e, sound) {
@@ -36,9 +35,11 @@ function playRecording(e, sound) {
   }
 }
 
-function makePost(parent, pos, file, sound, name, year) {
+function makePost(parent, pos, file, sound, name, year, tag) {
   const fig = document.createElement("figure");
   fig.className = "column__item";
+
+  fig.classList.add(tag);
 
   const wrapper = document.createElement("div");
   wrapper.className = "column__item-imgwrap";
@@ -155,49 +156,50 @@ function makeContent(name, year, text) {
   content.append(item);
 }
 
-// let currentFilter;
-// function filterPosts(filter = "bbq") {
-//   const posts = document.querySelectorAll("figure");
+let currentFilter;
+function filterPosts(filter = "") {
+  const posts = document.querySelectorAll("figure");
 
-//   posts.forEach((post, index) => {
-//     // for loop if the currentFilter is getting turned off
-//     if (currentFilter === filter) {
-//       post.style.display = "block";
-//     } else if (post.classList.contains(filter)) {
-//       post.style.display = "block";
-//     } else {
-//       post.style.display = "none";
-//     }
-//   });
+  posts.forEach((post, index) => {
+    // for loop if the currentFilter is getting turned off
+    console.log(post.classList);
+    if (currentFilter === filter) {
+      post.style.display = "block";
+    } else if (post.classList.contains(filter)) {
+ 
+      post.style.display = "block";
+    } else {
+      post.style.display = "none";
+    }
+  });
 
-//   if (currentFilter === filter) {
-//     currentFilter = null;
-//   } else {
-//     currentFilter = filter;
-//   }
-// }
+  if (currentFilter === filter) {
+    currentFilter = null;
+  } else {
+    currentFilter = filter;
+  }
+}
 
-// // create a new div
+// create a new div
 
-// const buttonContainer = document.getElementById("scroll-container");
-// const filterList = ["bbq", "park", "summer"];
+const buttonContainer = document.getElementById("scroll-container");
+const filterList = ["Community-Inspiration", "Neighborhood-Spot"];
 
-// const filterContainer = document.createElement("div");
-// filterContainer.className = "remove-button";
+const filterContainer = document.createElement("div");
+filterContainer.className = "remove-button";
 
-// filterList.forEach((filter, index) => {
-//   const filterButton = document.createElement("div");
-//   filterButton.className = "filter-button";
-//   filterButton.innerHTML = filter;
-//   filterButton.addEventListener("click", (e) => {
-//     filterPosts(filter);
-//   });
-//   filterContainer.appendChild(filterButton);
-// });
+filterList.forEach((filter, index) => {
+  const filterButton = document.createElement("div");
+  filterButton.className = "filter-button";
+  filterButton.innerHTML = filter.replace("-"," ");
+  filterButton.addEventListener("click", (e) => {
+    filterPosts(filter);
+  });
+  filterContainer.appendChild(filterButton);
+});
 
-// buttonContainer.appendChild(filterContainer);
+buttonContainer.appendChild(filterContainer);
 
-// document.appendChild(removeButton)
 
 // api key to access JotForm, switch my key for yours
 JF.initialize({ apiKey: "8ae1a9cbfe5470129d1af524cc098f4c" }); //PUT YOUR OWN KEY HERE
@@ -247,9 +249,19 @@ JF.getFormSubmissions("223027820929053", function (response) {
     const title = submissions[j]["storyTitle"];
     const date = submissions[j]["date"].slice(0, 4);
     const audio = submissions[j]["Voice Recorder"];
+    const tag = submissions[j]["topic"];
+
+  
+    const filters = {
+      '{xkht44hxdjr}': "Neighborhood-Spot",
+      '{re3o8lqszjg}': "Community-Inspiration"
+      };
 
 
-    makePost(parent, j + 2, img, audio, title, date);
+
+  //  console.log(filters[tag]);
+
+    makePost(parent, j + 2, img, audio, title, date,filters[tag]);
 
     makeContent(title, date,text);
   }
