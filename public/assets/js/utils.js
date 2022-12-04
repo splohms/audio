@@ -8,8 +8,12 @@ const preloadImages = (selector = 'img') => {
 };
 
 const calcWinsize = () => {
+
+  console.log("Calc Winsize")
     return { width: window.innerWidth, height: window.innerHeight };
 };
+
+
 
 const adjustedBoundingRect = el => {
     var rect = el.getBoundingClientRect();

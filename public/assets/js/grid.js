@@ -11,7 +11,15 @@ const bodyEl = document.body;
 
 // Calculate the viewport size
 let winsize = calcWinsize();
-window.addEventListener('resize', () => winsize = calcWinsize());
+// window.addEventListener('resize', () => winsize = calcWinsize());
+
+// const timeOut = setTimeout((e) => {
+//     console.log("timeOut")
+//     calcWinsize();
+// }
+// , 1000)
+
+// timeOut
 
 /**
  * Class representing a grid of items
@@ -162,29 +170,41 @@ export class Grid {
         }
 
         // Recalculate current image transform
-        window.addEventListener('resize', () => {
-            if ( this.isGridView ) {
-                return false;
-            }
+        // ok this is not where the issue starts
+        // window.addEventListener('resize', () => {
+        //     console.log("mousemove")
+        //     if ( this.isGridView ) {
+        //         return false;
+        //     }
 
-            // Calculate the transform to apply to the current grid item image
-            const imageTransform = this.calcTransformImage();
-            gsap.set(this.gridItemArr[this.currentGridItem].DOM.img.outer, {
-                scale: imageTransform.scale,
-                x: imageTransform.x,
-                y: imageTransform.y
-            });
+        //     // Calculate the transform to apply to the current grid item image
+        //     const imageTransform = this.calcTransformImage();
+        //     gsap.set(this.gridItemArr[this.currentGridItem].DOM.img.outer, {
+        //         scale: imageTransform.scale,
+        //         x: imageTransform.x,
+        //         y: imageTransform.y
+        //     });
 
-            // Adjust the transform value for all the other grid items that moved to the thumbnails area.
-            for (const [position, viewportGridItem] of this.viewportGridItems.entries()) {
-                const imgOuter = viewportGridItem.DOM.img.outer;
-                gsap.set(viewportGridItem.DOM.img.outer, {
-                    scale: this.getFinalScaleValue(imgOuter),
-                    x: this.getFinalTranslationValue(imgOuter, position).x,
-                    y: this.getFinalTranslationValue(imgOuter, position).y
-                });
-            }
-        });
+        //     // setTimeout((e) => {
+        //     //     gsap.set(this.gridItemArr[this.currentGridItem].DOM.img.outer, {
+        //     //         scale: imageTransform.scale,
+        //     //         x: imageTransform.x,
+        //     //         y: imageTransform.y
+        //     //     });
+        //     // }, 1)
+
+        //     // Adjust the transform value for all the other grid items that moved to the thumbnails area.
+        //     for (const [position, viewportGridItem] of this.viewportGridItems.entries()) {
+        //         const imgOuter = viewportGridItem.DOM.img.outer;
+        //         gsap.set(viewportGridItem.DOM.img.outer, {
+        //             scale: this.getFinalScaleValue(imgOuter),
+        //             x: this.getFinalTranslationValue(imgOuter, position).x,
+        //             y: this.getFinalTranslationValue(imgOuter, position).y
+        //         });
+        //     }
+        // });
+
+ 
 
         // Close the current item's content and reveal back the grid. - here??
         this.DOM.backCtrl.addEventListener('click', () => {

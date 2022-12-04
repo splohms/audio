@@ -13,325 +13,102 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script>
-  	$(document).ready(function(){
-  		$("#myModal").modal('show');
-  	});
-  </script>
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body class="loading">
 
-  <div id="myModal" class="modal fade">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Welcome to Philly Voices!</h5>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              <div class="modal-body">
-  				<p>To get started, view stories on the home page</p>
-          <p>Explore story images, audio, and text and sort by topics</p>
-          <p>Share your own story on the submit page</p>
 
-              </div>
-          </div>
-      </div>
-  </div>
+  <main class = "everything">
+ 
+      <div class = "background">
 
-  <div class = "background">
- </div>
-
-
-  <main>
-
-    <div class = 'header'>
-      <!-- HTML !-->
-    <a href = "/submit">
-      <button class="button-16" role="button">Submit your story</button>
-    </a>
-     <!-- <form class="search-container" >
-       <input type="text" placeholder="Search.." name="search">
-       <button type="submit"><i class="fa fa-search"></i></button>
-     </form> -->
-    </div>
-    <div class="frame">
-      <!-- <a class="frame__title" href="/submit">Submit your story</a> -->
-      <nav class="frame__links">
-        <a href="/story">Home</a>
-        <a href= "/about">About</a>
-        <!-- <a href="/submit">Submit</a> -->
-      </nav>
-    </div>
-    <!-- <h2 class="heading heading--up" style="color:#AA336A">Philly</h2> -->
-    <h2 class="heading heading--down" style="color:#AA336A">Philly Voices</h2>
-<!--
-    <h2 class="mt-3">Saved Recordings</h2>
-    <div class="recordings row" id="recordings"> -->
-
-
-    <div class="columns" id="scroll-container" data-scroll-container>
-    </div><!-- columns -->
-    <div class="content">
-      <div class="content__item">
-        <h2 class="content__item-title">Lucky Wood</h2>
-        <div class="content__item-text">
-          <span>Faith, you're driving me away
-          You do it every day
-          You don't mean it
-          But it hurts like hell</span>
-          <span>2019</span>
-        </div>
       </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Cyber Blue</h2>
-        <div class="content__item-text">
-          <span>My brain says I'm receiving pain
-          A lack of oxygen
-          From my life support
-          My iron lung
-          </span>
-          <span>2011</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Bold Human</h2>
-        <div class="content__item-text">
-          <span>We're too young to fall asleep
-          Too cynical to speak
-          We are losing it
-          Can't you tell?</span>
-          <span>2014</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Good Earth</h2>
-        <div class="content__item-text">
-          <span>We scratch our eternal itch
-          A twentieth century bitch
-          And we are grateful for
-          Our iron lung</span>
-          <span>2020</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Gnostic Will</h2>
-        <div class="content__item-text">
-          <span>The head shrinkers
-          They want everything
-          My Uncle Bill
-          My Belisha beacon</span>
-          <span>2012</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Loyal Royal</h2>
-        <div class="content__item-text">
-          <span>The head shrinkers
-          They want everything
-          My Uncle Bill
-          My Belisha beacon</span>
-          <span>2015</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Empty Words</h2>
-        <div class="content__item-text">
-          <span>Suck, suck your teenage thumb
-          Toilet trained and dumb
-          When the power runs out
-          We'll just hum</span>
-          <span>2021</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">French Kiss</h2>
-        <div class="content__item-text">
-          <span>This, this is our new song
-          Just like the last one
-          A total waste of time
-          My iron lung</span>
-          <span>2013</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Lone Cone</h2>
-        <div class="content__item-text">
-          <span>And if you're frightened
-          You can be frightened
-          You can be, it's OK</span>
-          <span>2016</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Nonage Line</h2>
-        <div class="content__item-text">
-          <span>Lost in the mountain
-          Rust in my brain
-          The air is sacred here
-          In spite of your claim</span>
-          <span>2009</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Half Life</h2>
-        <div class="content__item-text">
-          <span>Up on the rooftops
-          Out of reach
-          Trickster is meaningless
-          Trickster is weak</span>
-          <span>2014</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Dutch Green</h2>
-        <div class="content__item-text">
-          <span>He's talking out the world
-          Talking out the world</span>
-          <span>2017</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Blue Hell</h2>
-        <div class="content__item-text">
-          <span>Hey, hey, hey
-          This is only halfway
-          Hey, hey, hey
-          This is only halfway</span>
-          <span>2010</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Love Boat</h2>
-        <div class="content__item-text">
-          <span>I wanted you so bad
-          That I couldn't say
-          All these things fall apart</span>
-          <span>2015</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Valley Hill</h2>
-        <div class="content__item-text">
-          <span>We wanted out so bad
-          We couldn't say
-          These things fall apart</span>
-          <span>2018</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Cold Blood</h2>
-        <div class="content__item-text">
-          <span>Truant kids
-          A can of brick dust worms
-          Who do not want to climb down from
-          Their chestnut tree</span>
-          <span>2011</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Golden Ray</h2>
-        <div class="content__item-text">
-          <span>Long white gloves
-          Police tread carefully
-          Escaped from the zoo
-          The perfect child facsimile is</span>
-          <span>2016</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Kale Hale</h2>
-        <div class="content__item-text">
-          <span>Please could you stop the noise?
-            I'm trying to get some rest
-            From all the unborn chicken
-            voices in my head</span>
-          <span>2019</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Tulip Heat</h2>
-        <div class="content__item-text">
-          <span>What's that?
-          I may be paranoid, but not an android</span>
-          <span>2012</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Blame Game</h2>
-        <div class="content__item-text">
-          <span>When I am king you will be first against the wall
-          With your opinion which is of no consequence at all</span>
-          <span>2017</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Fake Cake</h2>
-        <div class="content__item-text">
-          <span>Ambition makes you look pretty ugly
-          Kicking and squealing, Gucci little piggy</span>
-          <span>2017</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Red Wrath</h2>
-        <div class="content__item-text">
-          <span>You don't remember, you don't remember
-          Why don't you remember my name?</span>
-          <span>2013</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Lone Dust</h2>
-        <div class="content__item-text">
-          <span>Off with his head, man, off with his head, man
-          Why don't you remember my name? I guess he does</span>
-          <span>2018</span>
-        </div>
-      </div>
-      <div class="content__item">
-        <h2 class="content__item-title">Book Belly</h2>
-        <div class="content__item-text">
-          <span>Rain down, rain down
-          Come on, rain down on me
-          From a great height
-          From a great height, height</span>
-          <span>2021</span>
-        </div>
-      </div>
-      <nav class="content__nav">
-        <div class="content__nav-wrap">
-          <div class="content__nav-item" style="background-image:url(/images/25.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/26.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/27.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/28.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/29.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/30.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/31.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/32.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/33.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/34.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/35.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/36.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/37.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/38.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/39.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/40.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/41.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/42.jpg)"></div>
-          <div class="content__nav-item" style="background-image:url(/images/43.jpg)"></div>
-        </div>
-      </nav>
-      <button class="unbutton button-back"><svg viewBox="0 0 50 9" width="100%"><path d="M0 4.5l5-3M0 4.5l5 3M50 4.5h-77"></path></svg></button>
-    </div>
-
+   
+   
+     
+       <div class = 'header'>
+         <!-- HTML !-->
+       <a href = "/submit">
+         <img class = "submit-button"src = "/images/submitbutton.svg">
+       </a>
+   
+     </div>
+   
+   
+       <div class="frame">
+         <div class="popup">
+           <img src = "/images/philly_logo.png" class = "phillylogo">
+           <p>
+             Are you ready to hear community stories? Listen and browse other stories on the home page or submit your own!
+           </p>
+           <button id = "close" class = "pop">Enter</a>
+           </div>
+         <!-- <a class="frame__title" href="/submit">Submit your story</a> -->
+         <nav class="frame__links">
+           <a href="/">Home</a>
+           <a href= "/about">About</a>
+           <!-- <a href="/submit">Submit</a> -->
+         </nav>
+       </div>
+   
+       <div class = "box">
+         
+       </div>
+       <!-- <h2 class="heading heading--up" style="color:#AA336A">Philly</h2> -->
+       <!-- <h2 class="heading heading--down" style="color:#AA336A">Philly Voices</h2> -->
+   <!--
+       <h2 class="mt-3">Saved Recordings</h2>
+       <div class="recordings row" id="recordings"> -->
+    
+   
+       <div class="columns" id="scroll-container" data-scroll-container>
+       </div><!-- columns -->
+       <div class="content" id = "content-pop-up">
+         <div class="content__item">
+           <h2 class="content__item-title">Cyber Blue</h2>
+           <div class="content__item-text">
+             <span>My brain says I'm receiving pain
+             A lack of oxygen
+             From my life support
+             My iron lung
+             </span>
+             <span>2011</span>
+           </div>
+         </div>
+         <nav class="content__nav" style="display: none;">
+           <div class="content__nav-wrap hidden" style="display: none;">
+             <div class="content__nav-item" style="background-image:url(/images/25.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/26.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/27.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/28.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/29.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/30.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/31.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/32.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/33.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/34.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/35.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/36.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/37.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/38.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/39.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/40.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/41.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/42.jpg)"></div>
+             <div class="content__nav-item" style="background-image:url(/images/43.jpg)"></div>
+           </div>
+         </nav>
+         <button class="unbutton button-back"><svg viewBox="0 0 50 9" width="100%"><path d="M0 4.5l5-3M0 4.5l5 3M50 4.5h-77"></path></svg></button>
+       </div>
+   
+   
   </main>
     <script src="https://js.jotform.com/JotForm.js"></script>
     <script src="/js/test.js"></script>
   <script type = "module" src= '/js/gallery.js'></script>
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 
 
 </body>
