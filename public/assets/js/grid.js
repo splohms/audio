@@ -9,7 +9,7 @@ const bodyEl = document.body;
 
 // Calculate the viewport size
 let winsize = calcWinsize();
-// window.addEventListener('resize', () => winsize = calcWinsize());
+window.addEventListener('resize', () => winsize = calcWinsize());
 
 // const timeOut = setTimeout((e) => {
 //     console.log("timeOut")

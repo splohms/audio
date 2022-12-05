@@ -1,23 +1,19 @@
 // import e = require("express");
 
-
 //for pop up
-window.addEventListener("load", function(){
-  setTimeout(
-      function open(event){
-          document.querySelector(".popup").style.display = "block";
-      },
-      500
-  )
+window.addEventListener("load", function () {
+  setTimeout(function open(event) {
+    document.querySelector(".popup").style.display = "sblock";
+  }, 500);
 });
 
-
-document.querySelector("#close").addEventListener("click", function(){
+document.querySelector("#close").addEventListener("click", function () {
   document.querySelector(".popup").style.display = "none";
-  document.querySelector(".everything").style.backgroundColor =  "rgba(0,0,0,0)";
+  document.querySelector("main").style.backgroundColor = "rgba(0,0,0,0)";
 });
 
 function playRecording(e, sound) {
+  console.log("I'm being clicked")
   let button = e.target;
   if (button.tagName === "IMG") {
     // get parent button
@@ -26,6 +22,7 @@ function playRecording(e, sound) {
   const audio = button.previousElementSibling;
   if (audio && audio.tagName === "AUDIO") {
     if (audio.paused) {
+      console.log("playing sound")
       audio.play();
       button.firstElementChild.src = "images/pause.png";
     } else {
@@ -64,10 +61,6 @@ function makePost(parent, pos, file, sound, name, year, tag) {
   title.innerHTML = name;
   date.innerHTML = year;
 
-  if (name == "Cyber Blue"){
-    console.log("I'm blue")
-  }
-
   const audio = document.createElement("audio");
   audio.id = "story-sound";
   audio.onended = (e) => {
@@ -103,9 +96,11 @@ function makePost(parent, pos, file, sound, name, year, tag) {
     const audio_container = document.createElement("div");
     audio_container.className = "audio-container";
 
-    img.appendChild(audio_container);
-    audio_container.appendChild(audio);
-    audio_container.appendChild(playButton);
+    if (name != "Philly Trip") {
+      img.appendChild(audio_container);
+      audio_container.appendChild(audio);
+      audio_container.appendChild(playButton);
+    }
   }
 
   // audio.setAttribute('controls', ''); // add controls
@@ -121,10 +116,6 @@ function makePost(parent, pos, file, sound, name, year, tag) {
   parent.appendChild(fig);
 }
 
-
-// makePost(colOne, 2, "/images/protest.jpg", "Cyber Blue", 2011);
-
-
 function makeContent(name, year, text) {
   const content = document.getElementById("content-pop-up");
 
@@ -139,10 +130,9 @@ function makeContent(name, year, text) {
   item_text.className = "content__item-text";
 
   const item_caption = document.createElement("span");
-  if(text!= undefined){
+  if (text != undefined) {
     item_caption.innerHTML = text;
   }
-
 
   const item_year = document.createElement("span");
   item_year.innerHTML = year;
@@ -162,11 +152,10 @@ function filterPosts(filter = "") {
 
   posts.forEach((post, index) => {
     // for loop if the currentFilter is getting turned off
-    console.log(post.classList);
+    // console.log(post.classList);
     if (currentFilter === filter) {
       post.style.display = "block";
     } else if (post.classList.contains(filter)) {
- 
       post.style.display = "block";
     } else {
       post.style.display = "none";
@@ -180,6 +169,34 @@ function filterPosts(filter = "") {
   }
 }
 
+function modifyButtonColor(filterButton) {
+  let otherButton;
+  switch (filterButton.id) {
+    case "community":
+      console.log("community");
+      otherButton = document.getElementById("spot");
+      break;
+    case "spot":
+      console.log("spot");
+      otherButton = document.getElementById("community");
+      break;
+    default:
+    // code block
+  }
+  console.log("modifying button");
+  if (filterButton.style.backgroundColor == "rgb(255, 249, 129)") {
+    // console.log("To green")
+    filterButton.style.backgroundColor = "#51988B";
+  } else {
+    // console.log("To yellow")
+    filterButton.style.backgroundColor = "#FFF981";
+    otherButton.style.backgroundColor = "#51988B";
+    // console.log("the other button",filterButton.id)
+  }
+
+  // console.log("Color",filterButton.style.backgroundColor)
+}
+
 // create a new div
 
 const buttonContainer = document.getElementById("scroll-container");
@@ -191,15 +208,29 @@ filterContainer.className = "remove-button";
 filterList.forEach((filter, index) => {
   const filterButton = document.createElement("div");
   filterButton.className = "filter-button";
-  filterButton.innerHTML = filter.replace("-"," ");
+  if (index == 0) {
+    console.log(0);
+    filterButton.setAttribute("id", "community");
+  }
+  if (index == 1) {
+    console.log(1);
+    filterButton.setAttribute("id", "spot");
+  }
+
+  filterButton.innerHTML = filter.replace("-", " ");
   filterButton.addEventListener("click", (e) => {
+    // console.log(index);
+
+    modifyButtonColor(filterButton);
     filterPosts(filter);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0; // need help with this one from niko
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
   });
   filterContainer.appendChild(filterButton);
 });
 
 buttonContainer.appendChild(filterContainer);
-
 
 // api key to access JotForm, switch my key for yours
 JF.initialize({ apiKey: "8ae1a9cbfe5470129d1af524cc098f4c" }); //PUT YOUR OWN KEY HERE
@@ -251,19 +282,17 @@ JF.getFormSubmissions("223027820929053", function (response) {
     const audio = submissions[j]["Voice Recorder"];
     const tag = submissions[j]["topic"];
 
-  
     const filters = {
-      '{xkht44hxdjr}': "Neighborhood-Spot",
-      '{re3o8lqszjg}': "Community-Inspiration"
-      };
+      "{xkht44hxdjr}": "Neighborhood-Spot",
+      "{re3o8lqszjg}": "Community-Inspiration",
+    };
+
+    //  console.log(filters[tag]);
+
+    makeContent(title, date, text);
+    makePost(parent, j + 2, img, audio, title, date, filters[tag]);
 
 
-
-  //  console.log(filters[tag]);
-
-    makePost(parent, j + 2, img, audio, title, date,filters[tag]);
-
-    makeContent(title, date,text);
   }
 
   // EXECUTE THE FUNCTION THAT FORECES THE PAGE TO RECALCULATE THE SIZE OF THE PARENT?
@@ -324,7 +353,7 @@ childContainerOne.className = "column-wrap column-wrap--height";
 const colOne = document.createElement("div");
 colOne.className = "column";
 
-makePost(colOne, 1, "/images/protest.jpg","", "Cyber Blue", 2011);
+makePost(colOne, 1, "/images/defaultpost.jpg", "", "Philly Trip", 2022);
 // makePost(colOne,5,'/images/flood.jpg', 'Gnostic Will', 2012)
 // makePost(colOne,8,'/images/space.jpg', 'French Kiss', 2013)
 // makePost(colOne,11,'/images/dumping.jpg', 'Half Life', 2014)

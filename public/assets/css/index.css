@@ -20,6 +20,7 @@
   width: 50%;
   height: 50%;
   margin-top: 30%;
+  z-index: 100;
 
 }
 
@@ -356,6 +357,7 @@ main::after {
 	grid-area: content;
 	display: flex;
 	flex-direction: column;
+	width: fit-content;
 }
 
 .content__item--current {
@@ -994,6 +996,7 @@ label {
   top: 0;
   justify-content: center;
   align-items: center;
+  z-index: 1000000;
 }
 
 /* #story-sound{
@@ -1197,8 +1200,7 @@ a:link { color: black; }
 
 .popup{
     background-color: #f2afaf;
-    width: 420px;
-    padding: 30px 40px;
+    padding: 20px 100px;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
@@ -1209,6 +1211,9 @@ a:link { color: black; }
     text-align: center;
 	text-transform: none;
 	box-shadow: 100px 100px 100px rgb(255 255 255 / 0.2);
+	position: fixed;
+	width: fit-content;
+	height: fit-content;
 }
 
 .popup h2{
@@ -1236,7 +1241,7 @@ a:link { color: black; }
 }
 
 .phillylogo{
-	height:200px;
+	height:15rem;
 	width:auto;
 }
 
@@ -1245,4 +1250,8 @@ a:link { color: black; }
 main{
 	background-color: rgba(0,0,0,0.5)
 
+}
+
+.content-popup{
+	z-index: -100;
 }
