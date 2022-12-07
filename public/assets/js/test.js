@@ -148,6 +148,9 @@ function makeContent(name, year, text) {
 
 let currentFilter;
 function filterPosts(filter = "") {
+  // console.log("hi")
+  
+
   const posts = document.querySelectorAll("figure");
 
   posts.forEach((post, index) => {
@@ -166,6 +169,14 @@ function filterPosts(filter = "") {
     currentFilter = null;
   } else {
     currentFilter = filter;
+
+    const test = document.getElementsByClassName("column")
+
+    for (let i = 0; i < test.length; i++) {
+      const el = test[i];
+  
+      el.style.transform = "translate(0px)"
+    }
   }
 }
 
@@ -221,10 +232,11 @@ filterList.forEach((filter, index) => {
   filterButton.addEventListener("click", (e) => {
     // console.log(index);
 
+
     modifyButtonColor(filterButton);
     filterPosts(filter);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0; // need help with this one from niko
+    // document.body.scrollTop = 0;
+    // document.documentElement.scrollTop = 0; // need help with this one from niko
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
   });
   filterContainer.appendChild(filterButton);
@@ -256,7 +268,7 @@ JF.getFormSubmissions("223027820929053", function (response) {
     });
 
     submissionProps["date"] = date;
-    // console.log("Props", submissionProps);
+    console.log("Props", submissionProps);
 
     // add submission to submissions array
     submissions.push(submissionProps);
@@ -276,15 +288,15 @@ JF.getFormSubmissions("223027820929053", function (response) {
     }
 
     const img = submissions[j]["Take Photo"];
-    const text = submissions[j]["storyText"];
+    const text = submissions[j]["whatsYour"];
     const title = submissions[j]["storyTitle"];
     const date = submissions[j]["date"].slice(0, 4);
     const audio = submissions[j]["Voice Recorder"];
-    const tag = submissions[j]["topic"];
+    const tag = submissions[j]["questiontheme"];
 
     const filters = {
-      "{xkht44hxdjr}": "Neighborhood-Spot",
-      "{re3o8lqszjg}": "Community-Inspiration",
+      "What's a core memory you have of your favorite spot in your neighborhood?": "Neighborhood-Spot",
+      "Who is someone in your local community that inspires you? Can you tell us more about them?": "Community-Inspiration",
     };
 
     //  console.log(filters[tag]);
