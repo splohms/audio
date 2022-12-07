@@ -13,14 +13,14 @@
 
 
 <body class="pt-5">
-  <div class = "background">
+  <div class = "background-plain" style="background-color: red !important">
  </div>
-  <h2 class="heading heading--down" style="color:#AA336A">Submit</h2>
+  <!-- <h2 class="heading heading--down" style="color:#AA336A">Submit</h2> -->
 
   <div class="frame">
 
     <nav class="frame__links">
-      <a href="/story">Home</a>
+      <a href="/">Home</a>
       <a href= "/about">About</a>
       <!-- <a href="/submit">Submit</a> -->
     </nav>
@@ -45,136 +45,27 @@
     </div>
   </div>
 
-  <h2 class="heading heading--down" style="color:#AA336A">Submits</h2>
 
+  <div class ="upload-image">
 
-  <div class="contentarea">
-    <h1>
-        Take a Photo
-    </h1>
-    <div class="camera">
-        <video id="video">Video stream not available.</video>
-    </div>
-    <div><button id="startbutton">Take photo</button>
-    <script src="/imagecapture.js"></script></div>
-    
-    <canvas id="canvas"></canvas>
-    <div class="output">
-        <img id="photo" alt="The screen capture will  appear in this box."> 
-    </div>
-   
-    <script>
-      /* JS comes here
-      (function() {
-  
-          var width = 320; // We will scale the photo width to this
-          var height = 0; // This will be computed based on the input stream
-  
-          var streaming = false;
-  
-          var video = null;
-          var canvas = null;
-          var photo = null;
-          var startbutton = null;
-  
-          function startup() {
-              video = document.getElementById('video');
-              canvas = document.getElementById('canvas');
-              photo = document.getElementById('photo');
-              startbutton = document.getElementById('startbutton');
-  
-              navigator.mediaDevices.getUserMedia({
-                      video: true,
-                      audio: false
-                  })
-                  .then(function(stream) {
-                      video.srcObject = stream;
-                      video.play();
-                  })
-                  .catch(function(err) {
-                      console.log("An error occurred: " + err);
-                  });
-  
-              video.addEventListener('canplay', function(ev) {
-                  if (!streaming) {
-                      height = video.videoHeight / (video.videoWidth / width);
-  
-                      if (isNaN(height)) {
-                          height = width / (4 / 3);
-                      }
-  
-                      video.setAttribute('width', width);
-                      video.setAttribute('height', height);
-                      canvas.setAttribute('width', width);
-                      canvas.setAttribute('height', height);
-                      streaming = true;
-                  }
-              }, false);
-  
-              startbutton.addEventListener('click', function(ev) {
-                  takepicture();
-                  ev.preventDefault();
-              }, false);
-  
-              clearphoto();
-          }
-  
-  
-          function clearphoto() {
-              var context = canvas.getContext('2d');
-              context.fillStyle = "#AAA";
-              context.fillRect(0, 0, canvas.width, canvas.height);
-  
-              var data = canvas.toDataURL('image/png');
-              photo.setAttribute('src', data);
-          }
-  
-          function takepicture() {
-              var context = canvas.getContext('2d');
-              if (width && height) {
-                  canvas.width = width;
-                  canvas.height = height;
-                  context.drawImage(video, 0, 0, width, height);
-  
-                  var data = canvas.toDataURL('image/png');
-                  photo.setAttribute('src', data);
-              } else {
-                  clearphoto();
-              }
-          }
-  
-          window.addEventListener('load', startup, false);
-      })(); */
-      </script>
-  </div>
+    <!--default html file upload button-->
+    <!-- <input type="file" id="actual-btn" accept="image/jpeg, image/png, image/jpg" / hidden> -->
 
+    <!--our custom file upload button-->
+    <!-- <label for="actual-btn">Upload Image</label>
+    <div id="display-image"></div>
 
+  </div>  -->
 
-<div>
-<div class="imageupload_backup"> Image upload backup </div>
-  <input type= "file" accept="image/*" capture>
-</div>
-
-
-
-  <div class="frame">
-    <h1 class="frame__title">Share your story</h1>
-    <nav class="frame__links">
-    	<a href="\">Home</a>
-      <a href= "\about">About</a>
-      <a href= "\submit">Submit</a>
-    </nav>
-    <button class="unbutton button-menu" aria-label="Open the menu"><span></span></button>
-    <script src="/js/record.js"></script>
+  <div id="form">
+      <script type="text/javascript" src="https://form.jotform.com/jsform/223243968749167"></script>
   </div>
 
   <script src="https://js.jotform.com/JotForm.js"></script>
 
 
+  <script src="/js/removeBranding.js"></script>
 
-  
-
- 
 
 </body>
 </html>
