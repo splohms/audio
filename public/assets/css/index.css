@@ -932,9 +932,17 @@ body {
 
 
 .about{
-	 text-align: center;
-	 margin-top: 50px;
-	 font-size: 24px;
+	text-align: center;
+	margin-top: 50px;
+	font-size: 24px;
+	margin-top: 20px;
+	font-size: 14px;
+	padding: 20px 100px;
+   font-family: 'Geneva';
+   position:relative;
+   width: fit-content;
+   height: fit-content;
+   overflow:scroll;
 }
 
 form{
@@ -1062,7 +1070,7 @@ html {
 
 .filter-button:hover{
 	background-color: #FFF981;
-	color:blac
+	color:black;
 
 }
 
@@ -1134,6 +1142,7 @@ html {
    border-radius: 2px;
    color: #fff;
    font-family: 'Open Sans', Helvetica, sans-serif;
+   margin-top: -50px;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
 }
@@ -1152,7 +1161,7 @@ html {
 	 /* left: 35%; */
 	 height: 60px;
 	 text-shadow: 2px 2px 2px #e67e22;
-   margin-top: 8%;
+   /* margin-top: 8%; */
    left: auto;
    right: auto;
 }

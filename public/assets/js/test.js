@@ -211,9 +211,12 @@ function modifyButtonColor(filterButton) {
   if (filterButton.style.backgroundColor == "rgb(255, 249, 129)") {
     // console.log("To green")
     filterButton.style.backgroundColor = "#51988B";
+    // otherButton.style.color = "#FFFFFF";
+    // filterButton.style.color = "#000000";
   } else {
     // console.log("To yellow")
     filterButton.style.backgroundColor = "#FFF981";
+    filterButton.style.color = "#000000";
     otherButton.style.backgroundColor = "#51988B";
     // console.log("the other button",filterButton.id)
   }
