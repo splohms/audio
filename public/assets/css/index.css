@@ -950,8 +950,19 @@ body {
 
 .about{
 	 text-align: center;
-	 margin-top: 50px;
-	 font-size: 24px;
+	 margin-top: 20px;
+	 font-size: 14px;
+	 padding: 20px 100px;
+	 /* padding-left: 50px;
+	 padding-right: 50px; */
+    /* transform: translate(-50%,-50%); */
+    /* left: 50%;
+    top:auto; */
+	font-family: 'Geneva';
+	position:relative;
+	width: fit-content;
+	height: fit-content;
+	overflow:scroll;
 }
 
 form{
@@ -1160,7 +1171,11 @@ position: relative;
    font-family: 'Open Sans', Helvetica, sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+   scroll-padding-bottom: 20px;
 }
+
+/* idk how to make it not overlap w the about title at the bottom :( */
+
  .carousel {
 	 position: relative;
     margin-top: 50px;
