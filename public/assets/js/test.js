@@ -12,6 +12,15 @@ document.querySelector("#close").addEventListener("click", function () {
   document.querySelector("main").style.backgroundColor = "rgba(0,0,0,0)";
 });
 
+document.querySelector("#close-tip").addEventListener("click", function () {
+  document.querySelector(".tips").style.display = "none";
+});
+
+document.querySelector("#open-tip").addEventListener("click", function () {
+  document.querySelector(".tips").style.display = "block";
+});
+
+
 function playRecording(e, sound) {
   console.log("I'm being clicked")
   let button = e.target;
