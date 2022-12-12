@@ -12,6 +12,15 @@ document.querySelector("#close").addEventListener("click", function () {
   document.querySelector("main").style.backgroundColor = "rgba(0,0,0,0)";
 });
 
+document.querySelector("#close-tip").addEventListener("click", function () {
+  document.querySelector(".tips").style.display = "none";
+});
+
+document.querySelector("#open-tip").addEventListener("click", function () {
+  document.querySelector(".tips").style.display = "block";
+});
+
+
 function playRecording(e, sound) {
   console.log("I'm being clicked")
   let button = e.target;
@@ -116,6 +125,10 @@ function makePost(parent, pos, file, sound, name, year, tag) {
   parent.appendChild(fig);
 }
 
+
+// makeDefaultPost(colThree,23,'/images/tire.jpg', 'Red Wrath', 2023)
+
+
 function makeContent(name, year, text) {
   const content = document.getElementById("content-pop-up");
 
@@ -148,6 +161,9 @@ function makeContent(name, year, text) {
 
 let currentFilter;
 function filterPosts(filter = "") {
+  // console.log("hi")
+  
+
   const posts = document.querySelectorAll("figure");
 
   posts.forEach((post, index) => {
@@ -166,6 +182,14 @@ function filterPosts(filter = "") {
     currentFilter = null;
   } else {
     currentFilter = filter;
+
+    const test = document.getElementsByClassName("column")
+
+    for (let i = 0; i < test.length; i++) {
+      const el = test[i];
+  
+      el.style.transform = "translate(0px)"
+    }
   }
 }
 
@@ -221,10 +245,11 @@ filterList.forEach((filter, index) => {
   filterButton.addEventListener("click", (e) => {
     // console.log(index);
 
+
     modifyButtonColor(filterButton);
     filterPosts(filter);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0; // need help with this one from niko
+    // document.body.scrollTop = 0;
+    // document.documentElement.scrollTop = 0; // need help with this one from niko
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
   });
   filterContainer.appendChild(filterButton);
@@ -241,58 +266,71 @@ JF.getFormSubmissions("223027820929053", function (response) {
 
   const submissions = [];
 
+  console.log(response)
   for (var i = 0; i < response.length; i++) {
     // create an object to store the submissions and structure as a json
-    const submissionProps = {};
 
-    // add all fields of response.answers to our object
-    const keys = Object.keys(response[i].answers);
-    const date = response[i].created_at;
+    console.log(response[i].status)
 
-    keys.forEach((answer) => {
-      const lookup = response[i].answers[answer].cfname ? "cfname" : "name";
-      submissionProps[response[i].answers[answer][lookup]] =
-        response[i].answers[answer].answer;
-    });
+      const submissionProps = {};
 
-    submissionProps["date"] = date;
-    // console.log("Props", submissionProps);
+      // add all fields of response.answers to our object
+      const keys = Object.keys(response[i].answers);
+      const date = response[i].created_at;
+  
+      keys.forEach((answer) => {
+        const lookup = response[i].answers[answer].cfname ? "cfname" : "name";
+        submissionProps[response[i].answers[answer][lookup]] =
+          response[i].answers[answer].answer;
+      });
+  
+      submissionProps["date"] = date;
+      console.log("Props", submissionProps);
+  
 
-    // add submission to submissions array
-    submissions.push(submissionProps);
-  }
-  //  console.log("My Stories",submissions)
-
-  for (var j = 0; j < submissions.length; j++) {
-    if ((j + 1) % 3 == 0) {
-      // console.log(3);
-      parent = colTwo;
-    } else if ((j + 1) % 3 == 1) {
-      // console.log(1);
-      parent = colThree;
-    } else if ((j + 1) % 3 == 2) {
-      // console.log(2);
-      parent = colOne;
+      // add submission to submissions array
+      if (response[i].status=="ACTIVE") {
+      submissions.push(submissionProps);
+      }
     }
+     console.log("My Stories",submissions)
+  
+    for (var j = 0; j < submissions.length; j++) {
+      if ((j + 1) % 3 == 0) {
+        // console.log(3);
+        parent = colTwo;
+      } else if ((j + 1) % 3 == 1) {
+        // console.log(1);
+        parent = colThree;
+      } else if ((j + 1) % 3 == 2) {
+        // console.log(2);
+        parent = colOne;
+      }
+  
+      // const img = submissions[j]["Take Photo"];
 
-    const img = submissions[j]["Take Photo"];
-    const text = submissions[j]["storyText"];
-    const title = submissions[j]["storyTitle"];
-    const date = submissions[j]["date"].slice(0, 4);
-    const audio = submissions[j]["Voice Recorder"];
-    const tag = submissions[j]["topic"];
+      const img = submissions[j]["addImage"];
+      const text = submissions[j]["whatsYour"];
+      const title = submissions[j]["storyTitle"];
+      const date = submissions[j]["date"].slice(0, 4);
+      const audio = submissions[j]["Voice Recorder"];
+      const tag = submissions[j]["questiontheme"];
+  
+      const filters = {
+        "What's a core memory you have of your favorite spot in your neighborhood?": "Neighborhood-Spot",
+        "Who is someone in your local community that inspires you? Can you tell us more about them?": "Community-Inspiration",
+      };
+  
+      //  console.log(filters[tag]);
+      
+  
+      makeContent(title, date, text);
+      makePost(parent, j + 2, img, audio, title, date, filters[tag]);
+  
+  
 
-    const filters = {
-      "{xkht44hxdjr}": "Neighborhood-Spot",
-      "{re3o8lqszjg}": "Community-Inspiration",
-    };
-
-    //  console.log(filters[tag]);
-
-    makeContent(title, date, text);
-    makePost(parent, j + 2, img, audio, title, date, filters[tag]);
-
-
+  
+   
   }
 
   // EXECUTE THE FUNCTION THAT FORECES THE PAGE TO RECALCULATE THE SIZE OF THE PARENT?
@@ -354,13 +392,13 @@ const colOne = document.createElement("div");
 colOne.className = "column";
 
 makePost(colOne, 1, "/images/defaultpost.jpg", "", "Philly Trip", 2022);
-// makePost(colOne,5,'/images/flood.jpg', 'Gnostic Will', 2012)
-// makePost(colOne,8,'/images/space.jpg', 'French Kiss', 2013)
-// makePost(colOne,11,'/images/dumping.jpg', 'Half Life', 2014)
-// makePost(colOne,14,'/images/tire.jpg', 'Love Boat', 2015)
-// makePost(colOne,17,'/images/space.jpg', 'Cold Blood', 2013)
-// makePost(colOne,20,'/images/dumping.jpg', 'Tulip Heat', 2014)
-// makePost(colOne,23,'/images/tire.jpg', 'Red Wrath', 2015)
+// makeDefaultPost(colOne,5,'/images/flood.jpg', 'Gnostic Will', 2012)
+// makeDefaultPost(colOne,8,'/images/space.jpg', 'French Kiss', 2013)
+// makeDefaultPost(colOne,11,'/images/dumping.jpg', 'Half Life', 2014)
+// makeDefaultPost(colOne,14,'/images/tire.jpg', 'Love Boat', 2015)
+// makeDefaultPost(colOne,17,'/images/space.jpg', 'Cold Blood', 2013)
+// makeDefaultPost(colOne,20,'/images/dumping.jpg', 'Tulip Heat', 2014)
+// makeDefaultPost(colOne,23,'/images/tire.jpg', 'Red Wrath', 2015)
 
 childContainerOne.appendChild(colOne);
 container.appendChild(childContainerOne);
@@ -373,14 +411,14 @@ const colTwo = document.createElement("div");
 colTwo.className = "column";
 colTwo.setAttribute("data-scroll-section", "");
 
-// makePost(colTwo,1,'/images/protest.jpg', 'Cyber Blue', 2022)
-// makePost(colTwo,4,'/images/flood.jpg', 'Gnostic Will', 2022)
-// makePost(colTwo,7,'/images/space.jpg', 'French Kiss', 2022)
-// makePost(colTwo,10,'/images/dumping.jpg', 'Half Life', 2022)
-// makePost(colTwo,13,'/images/tire.jpg', 'Love Boat', 2022)
-// makePost(colTwo,16,'/images/space.jpg', 'Cold Blood', 2022)
-// makePost(colTwo,19,'/images/dumping.jpg', 'Tulip Heat', 2022)
-// makePost(colTwo,22,'/images/tire.jpg', 'Red Wrath', 2022)
+// makeDefaultPost(colTwo,1,'/images/protest.jpg', 'Cyber Blue', 2022)
+// makeDefaultPost(colTwo,4,'/images/flood.jpg', 'Gnostic Will', 2022)
+// makeDefaultPost(colTwo,7,'/images/space.jpg', 'French Kiss', 2022)
+// makeDefaultPost(colTwo,10,'/images/dumping.jpg', 'Half Life', 2022)
+// makeDefaultPost(colTwo,13,'/images/tire.jpg', 'Love Boat', 2022)
+// makeDefaultPost(colTwo,16,'/images/space.jpg', 'Cold Blood', 2022)
+// makeDefaultPost(colTwo,19,'/images/dumping.jpg', 'Tulip Heat', 2022)
+// makeDefaultPost(colTwo,22,'/images/tire.jpg', 'Red Wrath', 2022)
 
 childContainerTwo.appendChild(colTwo);
 
@@ -395,13 +433,13 @@ colThree.className = "column";
 
 childContainerThree.appendChild(colThree);
 
-// makePost(colThree,3,'/images/protest.jpg', 'Cyber Blue', 2023)
-// makePost(colThree,6,'/images/flood.jpg', 'Gnostic Will', 2023)
-// makePost(colThree,9,'/images/space.jpg', 'French Kiss', 2023)
-// makePost(colThree,11,'/images/dumping.jpg', 'Half Life', 2023)
-// makePost(colThree,14,'/images/tire.jpg', 'Love Boat', 2023)
-// makePost(colThree,17,'/images/space.jpg', 'Cold Blood', 2023)
-// makePost(colThree,20,'/images/just.jpg', 'Tulip Heat', 2023)
-// makePost(colThree,23,'/images/tire.jpg', 'Red Wrath', 2023)
+// makeDefaultPost(colThree,3,'/images/protest.jpg', 'Cyber Blue', 2023)
+// makeDefaultPost(colThree,6,'/images/flood.jpg', 'Gnostic Will', 2023)
+// makeDefaultPost(colThree,9,'/images/space.jpg', 'French Kiss', 2023)
+// makeDefaultPost(colThree,11,'/images/dumping.jpg', 'Half Life', 2023)
+// makeDefaultPost(colThree,14,'/images/tire.jpg', 'Love Boat', 2023)
+// makeDefaultPost(colThree,17,'/images/space.jpg', 'Cold Blood', 2023)
+// makeDefaultPost(colThree,20,'/images/just.jpg', 'Tulip Heat', 2023)
+// makeDefaultPost(colThree,23,'/images/tire.jpg', 'Red Wrath', 2023)
 
 container.appendChild(childContainerThree);
