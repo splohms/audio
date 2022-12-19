@@ -54,7 +54,8 @@ function makePost(parent, pos, file, sound, name, year, tag) {
   // console.log(file);
   const img = document.createElement("div");
 
-  if (file == undefined) {
+  if (file == undefined || file ==[] || file=="") {
+    console.log("empty")
     wrapper.style = "background-color: rgba(255,255,255,.25);";
   } else {
     img.className = "column__item-img";
@@ -216,7 +217,7 @@ function modifyButtonColor(filterButton) {
   } else {
     // console.log("To yellow")
     filterButton.style.backgroundColor = "#FFF981";
-    filterButton.style.color = "#000000";
+    // filterButton.style.color = "#000000";
     otherButton.style.backgroundColor = "#51988B";
     // console.log("the other button",filterButton.id)
   }
@@ -269,11 +270,11 @@ JF.getFormSubmissions("223027820929053", function (response) {
 
   const submissions = [];
 
-  console.log(response)
+  // console.log(response)
   for (var i = 0; i < response.length; i++) {
     // create an object to store the submissions and structure as a json
 
-    console.log(response[i].status)
+    // console.log(response[i].status)
 
       const submissionProps = {};
 
@@ -288,7 +289,7 @@ JF.getFormSubmissions("223027820929053", function (response) {
       });
   
       submissionProps["date"] = date;
-      console.log("Props", submissionProps);
+      // console.log("Props", submissionProps);
   
 
       // add submission to submissions array
@@ -296,7 +297,7 @@ JF.getFormSubmissions("223027820929053", function (response) {
       submissions.push(submissionProps);
       }
     }
-     console.log("My Stories",submissions)
+    //  console.log("My Stories",submissions)
   
     for (var j = 0; j < submissions.length; j++) {
       if ((j + 1) % 3 == 0) {
@@ -312,7 +313,7 @@ JF.getFormSubmissions("223027820929053", function (response) {
   
       // const img = submissions[j]["Take Photo"];
 
-      const img = submissions[j]["addImage"];
+      const img = submissions[j]["uploadPhoto"];
       const text = submissions[j]["whatsYour"];
       const title = submissions[j]["storyTitle"];
       const date = submissions[j]["date"].slice(0, 4);
